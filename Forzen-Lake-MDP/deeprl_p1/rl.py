@@ -191,12 +191,12 @@ def value_iteration(env, gamma, max_iterations=int(1e3), tol=1e-3):
             max_value = None
             for a in range(env.nA):
                 expectation = 0
-                for prob, nextstate, reward, is_terminal in env.P[s][a]:
+                for prob, next_state, reward, is_terminal in env.P[s][a]:
                     if is_terminal:
+                        # Note: The value function of terminal state is 0.
                         expectation += prob * (reward + gamma * 0)
                     else:
-                        expectation += prob * (reward + gamma * V_old[nextstate])
-                #max_value = expectation if max_value is None else max(max_value, expectation)
+                        expectation += prob * (reward + gamma * V_old[next_state])
 
                 if max_value is None or max_value < expectation:
                     max_value = expectation

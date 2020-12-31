@@ -1,5 +1,5 @@
 future
-gym==0.7.0
+gym==0.18.0
 numpy
 scipy
 six
